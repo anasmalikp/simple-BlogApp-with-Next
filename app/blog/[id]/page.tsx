@@ -2,11 +2,7 @@ import { dbConnect } from '@/lib/mongoos'
 import { Task } from '@/models/Task'
 import React from 'react'
 
-interface PageProps {
-  params: { id: string }
-}
-
-const page = async ({ params }: PageProps) => {
+const page = async ({ params }: { params: { id: string } }) => {
   await dbConnect()
   const blog = await Task.findById(params.id).lean()
 
